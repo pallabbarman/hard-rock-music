@@ -17,8 +17,6 @@ const displaySongs = songs => {
     const songContainer = document.getElementById('song-container');
     songContainer.innerHTML = "";
     songs.forEach(song => {
-        console.log(song.preview.replace('http','https'));
-        // console.log(song.preview);
         const songDetail = document.createElement('div');
         songDetail.className = 'single-result row align-items-center my-3 p-3';
         songDetail.innerHTML = `
@@ -26,7 +24,7 @@ const displaySongs = songs => {
             <h3 class="lyrics-name">${song.title}</h3>
             <p class="author lead">Album by <span>${song.artist.name}</span></p>
             <audio controls>
-                <source src="${song.preview.replace('http','https')}" type="audio/mpeg">
+                <source src="${song.preview}" type="audio/mpeg">
             </audio>
         </div>
         <div class="col-md-3 text-md-right text-center">
