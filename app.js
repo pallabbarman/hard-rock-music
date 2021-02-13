@@ -2,16 +2,23 @@
 const searchSongs = async () => {
     const searchText = document.getElementById('search-song').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
-    toggleSpinner();
     try {
+        toggleSpinner();
         const res = await fetch(url);
         const data = await res.json();
         displaySongs(data.data);
     } catch (error) {
+        toggleSpinner();
         alert("Somethings went wrong! Please try again later!");
     }
     document.getElementById('search-song').value = "";
 }
+
+// enter key in search box 
+document.getElementById("search-song").addEventListener("keypress", function (event) {
+    if (event.key == 'Enter')
+        document.getElementById("search-button").click();
+});
 
 // display song 
 const displaySongs = songs => {
